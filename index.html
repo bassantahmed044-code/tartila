@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة ترتيلاً - المعلمة بسنت</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --pink-bg: #fff0f6; /* خلفية وردي فاتح مبهج ومريح جداً للعين */
+            --purple-main: #8e44ad; /* بنفسجي زاهي لاسم المنصة والعناوين */
+            --gold-accent: #d4af37; /* ذهبي أنيق للهلال والزخارف */
+            --white-card: #ffffff;
+            --text-color: #4a4a4a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--pink-bg);
+            font-family: 'Cairo', sans-serif;
+            color: var(--text-color);
+            padding: 30px 15px; /* مسافة مريحة في الأعلى والأسفل */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* يسمح بالنزول لأسفل بسلاسة */
+            min-height: 100vh;
+        }
+
+        /* فئة مخصصة لتطبيق خط الرقعة */
+        .ruqaa {
+            font-family: 'Aref Ruqaa', serif;
+        }
+
+        .container {
+            background: var(--white-card);
+            max-width: 600px;
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(142, 68, 173, 0.08);
+            padding: 30px;
+            border: 3px solid #fce4ec;
+            position: relative;
+            margin-bottom: 30px; /* لضمان عدم اختفاء الزر السفلي */
+        }
+
+        /* الزخرفة العلوية بالرموز المطلوبة */
+        .decoration-top {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 15px;
+            letter-spacing: 10px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #f5e6f7;
+        }
+
+        .platform-name {
+            color: var(--purple-main);
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(142, 68, 173, 0.1);
+        }
+
+        .teacher-name {
+            color: #555555;
+            font-size: 24px;
+            margin-top: -5px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .icons-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 28px;
+            margin-top: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--purple-main);
+            font-size: 16px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #f3e5f5;
+            border-radius: 16px;
+            font-size: 15px;
+            background-color: #fff9ff;
+            outline: none;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--purple-main);
+            box-shadow: 0 0 10px rgba(142, 68, 173, 0.15);
+            background-color: #ffffff;
+        }
+
+        /* حقل إضافة اسم جديد متحرك */
+        #newStudentGroup {
+            display: none;
+            background: #fff3f8;
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px dashed #fbcfe8;
+            margin-top: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* أزرار اختيار حالة الحضور الدائرية المبهجة */
+        .status-box {
+            display: flex;
+            gap: 15px;
+        }
+
+        .status-option {
+            flex: 1;
+            text-align: center;
+        }
+
+        .status-option input { 
+            display: none; 
+        }
+
+        .status-option label {
+            background: #fff5f9;
+            padding: 14px;
+            border-radius: 16px;
+            cursor: pointer;
+            border: 2px solid #fbcfe8;
+            display: block;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+        }
+
+        .status-option input:checked + label {
+            background: linear-gradient(45deg, var(--purple-main), #a29bfe);
+            color: white;
+            border-color: var(--purple-main);
+            box-shadow: 0 5px 15px rgba(142, 68, 173, 0.2);
+        }
+
+        /* كارت تقييم الأداء يظهر تلقائياً مع الحضور ويختفي مع الغياب */
+        .eval-card {
+            background: #faf5ff;
+            padding: 20px;
+            border-radius: 20px;
+            border: 2px solid #f3e5f5;
+            margin-top: 20px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* زر الحفظ والتسجيل الفخم */
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(45deg, var(--purple-main), #a29bfe);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 16px;
+            cursor: pointer;
+            margin-top: 25px;
+            box-shadow: 0 6px 20px rgba(142, 68, 173, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.35);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* تلميح النجاح والترحيل */
+        .alert {
+            display: none;
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 15px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 2px solid #c8e6c9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="decoration-top">🌿 🌙 📖</div>
+    
+    <div class="header">
+        <h1 class="platform-name ruqaa">منصة ترتيلاً</h1>
+        <span class="teacher-name ruqaa">المعلمة بسنت</span>
+        
+        <div class="icons-row">
+            <span style="color: #9b59b6;" title="غصن بنفسج"><i class="fa-solid fa-leaf"></i></span>
+            <span style="color: var(--gold-accent);" title="هلال ذهبي"><i class="fa-solid fa-moon"></i></span>
+            <span style="color: #5d4037;" title="مصحف شريف"><i class="fa-solid fa-book-quran"></i></span>
+        </div>
+    </div>
+
+    <form id="tartilaForm">
+        <div class="form-group">
+            <label>📅 تاريخ الحلقة اليوم:</label>
+            <input type="date" id="halkaDate" required>
+        </div>
+
+        <div class="form-group">
+            <label>👤 اختر اسم الطالب / الطالبة:</label>
+            <select id="studentSelect" onchange="checkNewStudent(this.value)" required>
+                <option value="" disabled selected>-- اختر الطالب من القائمة --</option>
+                <option value="محمد ماجد">محمد ماجد</option>
+                <option value="محمد على">محمد على</option>
+                <option value="يارا">يارا</option>
+                <option value="ادم إسلام">ادم إسلام</option>
+                <option value="فريده">فريده</option>
+                <option value="عمر">عمر</option>
+                <option value="لين">لين</option>
+                <option value="رقيه">رقيه</option>
+                <option value="منصور">منصور</option>
+                <option value="مؤيد">مؤيد</option>
+                <option value="جومانا">جومانا</option>
+                <option value="جيدا">جيدا</option>
+                <option value="أروى">أروى</option>
+                <option value="أسمى">أسمى</option>
+                <option value="يوسف">يوسف</option>
+                <option value="مريم">مريم</option>
+                <option value="زياد">زياد</option>
+                <option value="ريان">ريان</option>
+                <option value="مالك">مالك</option>
+                <option value="حمزه">حمزه</option>
+                <option value="حلا ماجد">حلا ماجد</option>
+                <option value="أدم حسين">أدم حسين</option>
+                <option value="بسمله">بسمله</option>
+                <option value="نوران">نوران</option>
+                <option value="ADD_NEW">➕ إضافة اسم طالب جديد غير مسجل...</option>
+            </select>
+            
+            <div id="newStudentGroup">
+                <label style="font-size: 14px; margin-top: 5px;">✍️ اكتب اسم الطالب الجديد:</label>
+                <input type="text" id="newStudentName" placeholder="اكتبي الاسم الجديد هنا...">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>📍 حالة الحضور والغياب:</label>
+            <div class="status-box">
+                <div class="status-option">
+                    <input type="radio" name="st" id="p" value="حضور" checked onclick="showEval(true)">
+                    <label for="p">حضور ✅</label>
+                </div>
+                <div class="status-option">
+                    <input type="radio" name="st" id="a" value="غياب" onclick="showEval(false)">
+                    <label for="a">غياب ❌</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="evalArea" class="eval-card">
+            <div class="form-group">
+                <label>📖 مستوى الحفظ (الجديد):</label>
+                <select id="hifz">
+                    <option value="ممتاز ومتصل (بدون أخطاء)">ممتاز ومتصل (بدون أخطاء)</option>
+                    <option value="جيد جداً (خطأ إلى خطأين)">جيد جداً (خطأ إلى خطأين)</option>
+                    <option value="وسط (يحتاج مراجعة وتثبيت)">وسط (يحتاج مراجعة وتثبيت)</option>
+                    <option value="ضعيف (لم يحفظ)">ضعيف (لم يحفظ)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>🔄 مستوى المراجعة (الماضي):</label>
+                <select id="morajaa">
+                    <option value="تم التمكين بنجاح وتثبيته">تم التمكين بنجاح وتثبيته</option>
+                    <option value="مراجعة جيدة (أخطاء بسيطة)">مراجعة جيدة (أخطاء بسيطة)</option>
+                    <option value="تداخل في الأوجه وأواخر الآيات">تداخل في الأوجه وأواخر الآيات</option>
+                    <option value="تحتاج إعادة تمكين الماضي بالكامل">تحتاج إعادة تمكين الماضي بالكامل</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>✨ جودة التجويد والمخارج:</label>
+                <select id="tajweed">
+                    <option value="تجويد سليم وممتاز">تجويد سليم وممتاز</option>
+                    <option value="لحن خفي (نقص غنن / مدود)">لحن خفي (نقص غنن / مدود)</option>
+                    <option value="لحن جلي (خطأ في تشكيل حركة)">لحن جلي (خطأ في تشكيل حركة)</option>
+                    <option value="عدم ضبط وتطبيق مخارج الحروف">عدم ضبط وتطبيق مخارج الحروف</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+                <label>📝 بيان القصور أو الملاحظات المحددة للحلقة:</label>
+                <textarea id="notes" rows="3" placeholder="مثال: عنده تداخل في متشابهات سورة الملك، أو يحتاج تركيز على المد الطبيعي..."></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn ruqaa">حفظ التقرير وترحيله لـ ترتيلاً ✨</button>
+    </form>
+
+    <div id="msg" class="alert">تم ترحيل وحفظ التقرير بنجاح يا معلمة بسنت! 🌸</div>
+</div>
+
+<script>
+    // تعيين تاريخ اليوم تلقائياً
+    document.getElementById('halkaDate').valueAsDate = new Date();
+
+    // دالة إخفاء وإظهار كارت التقييم حسب حالة الحضور
+    function showEval(v) {
+        document.getElementById('evalArea').style.display = v ? 'block' : 'none';
+    }
+
+    // دالة إخفاء وإظهار خانة كتابة الاسم الجديد
+    function checkNewStudent(val) {
+        const newGroup = document.getElementById('newStudentGroup');
+        if(val === "ADD_NEW") {
+            newGroup.style.display = 'block';
+            document.getElementById('newStudentName').setAttribute('required', 'true');
+        } else {
+            newGroup.style.display = 'none';
+            document.getElementById('newStudentName').removeAttribute('required');
+        }
+    }
+
+    document.getElementById('tartilaForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const msg = document.getElementById('msg');
+        msg.style.display = 'block';
+        msg.style.background = '#e8f5e9';
+        msg.style.color = '#2e7d32';
+        msg.style.borderColor = '#c8e6c9';
+        msg.innerText = "جاري إرسال البيانات وتحديث السطور... ✨";
+
+        const status = document.querySelector('input[name="st"]:checked').value;
+        
+        // استخلاص اسم الطالب سواء المختار أو المكتوب جديد
+        const selectVal = document.getElementById('studentSelect').value;
+        let finalStudentName = selectVal;
+        if(selectVal === "ADD_NEW") {
+            finalStudentName = document.getElementById('newStudentName').value;
+        }
+
+        let hifz = "-";
+        let morajaa = "-";
+        let tajweed = "-";
+        let deficiency = "-";
+
+        if(status === "حضور") {
+            hifz = document.getElementById('hifz').value;
+            morajaa = document.getElementById('morajaa').value;
+            tajweed = document.getElementById('tajweed').value;
+            deficiency = document.getElementById('notes').value || "لا يوجد قصور";
+        } else {
+            deficiency = "الطالب غائب عن الحلقة اليوم";
+        }
+
+        const payload = {
+            date: document.getElementById('halkaDate').value,
+            name: finalStudentName,
+            status: status,
+            hifz: hifz,
+            morajaa: morajaa,
+            tajweed: tajweed,
+            deficiency: deficiency
+        };
+
+        // الرابط السحري الجديد الخاص بكِ مفعل ومربوط بالكامل 👇
+        const url = "https://script.google.com/macros/s/AKfycbyRQBdGNtCkoP_O4of2Ym4_G3vt5ukUlm4f64m_wufrV0r8lFFFAkdkdwSB23KUzlkn/exec";
+
+        fetch(url, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify(payload)
+        }).then(() => {
+            msg.innerText = "تم حفظ التقرير بنجاح تـام في جدول جوجل شيت يا معلمة بسنت! 🌸";
+            
+            // إعادة ضبط الاستمارة تلقائياً
+            document.getElementById('studentSelect').value = "";
+            document.getElementById('newStudentName').value = "";
+            document.getElementById('newStudentGroup').style.display = 'none';
+            document.getElementById('notes').value = "";
+            
+            setTimeout(() => msg.style.display='none', 5000);
+        }).catch(err => {
+            msg.style.background = '#fde8e8';
+            msg.style.color = '#9b1c1c';
+            msg.style.borderColor = '#f8b4b4';
+            msg.innerText = "حدث خطأ في الاتصال، يرجى مراجعة صلاحيات رابط جوجل سكريبت.";
+        });
+    });
+</script>
+
+</body>
+</html>
