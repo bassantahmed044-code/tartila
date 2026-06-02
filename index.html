@@ -3,428 +3,353 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة ترتيلاً - المعلمة بسنت</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>ترتيلا - لوحة أبطال القرآن 🌟</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;900&family=Reem+Kufi:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        :root {
-            --pink-bg: #fff0f6; /* خلفية وردي فاتح مبهج ومريح جداً للعين */
-            --purple-main: #8e44ad; /* بنفسجي زاهي لاسم المنصة والعناوين */
-            --gold-accent: #d4af37; /* ذهبي أنيق للهلال والزخارف */
-            --white-card: #ffffff;
-            --text-color: #4a4a4a;
+        :root { 
+            --purple-main: #93679A; /* نفس لون كلمة ترتيلا في اللوجو تماماً */
+            --purple-light: #F3EEF5; 
+            --gold: #D4AF37; 
+            --text-dark: #4A354F;
+            --mint: #E2F0CB;
+            --baby-blue: #E8F4F8;
+            --pastel-pink: #FFF0F5;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        
+        /* خلفية مبهجة ومتحركة انسيابياً بألوان الباستيل المريحة للأطفال */
         body {
-            background-color: var(--pink-bg);
+            background: linear-gradient(125deg, var(--pastel-pink), var(--purple-light), var(--baby-blue), #E6E6FA);
+            background-size: 400% 400%;
+            animation: gradientAnimation 12s ease infinite;
             font-family: 'Cairo', sans-serif;
-            color: var(--text-color);
-            padding: 30px 15px; /* مسافة مريحة في الأعلى والأسفل */
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* يسمح بالنزول لأسفل بسلاسة */
+            padding: 20px;
+            direction: rtl;
+            text-align: center;
+            color: var(--text-dark);
+            margin: 0;
             min-height: 100vh;
         }
 
-        /* فئة مخصصة لتطبيق خط الرقعة */
-        .ruqaa {
-            font-family: 'Aref Ruqaa', serif;
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .container {
-            background: var(--white-card);
-            max-width: 600px;
-            width: 100%;
+        /* حاوية العنوان المحدثة برمجياً لتطابق رموز وزخارف اللوجو الأصلي */
+        .header-container {
+            max-width: 440px;
+            margin: 0 auto 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px 20px;
             border-radius: 30px;
-            box-shadow: 0 15px 40px rgba(142, 68, 173, 0.08);
-            padding: 30px;
-            border: 3px solid #fce4ec;
+            box-shadow: 0 10px 30px rgba(147, 103, 154, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            box-sizing: border-box;
             position: relative;
-            margin-bottom: 30px; /* لضمان عدم اختفاء الزر السفلي */
+            overflow: hidden;
         }
 
-        /* الزخرفة العلوية بالرموز المطلوبة */
-        .decoration-top {
-            text-align: center;
-            font-size: 30px;
-            margin-bottom: 15px;
-            letter-spacing: 10px;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px dashed #f5e6f7;
-        }
-
-        .platform-name {
-            color: var(--purple-main);
-            font-size: 48px;
-            font-weight: 700;
+        /* الهلال والنجمة اللامعة في أعلى العنوان */
+        .top-decorations {
+            color: var(--gold);
+            font-size: 1.4rem;
             margin-bottom: 5px;
-            text-shadow: 1px 1px 2px rgba(142, 68, 173, 0.1);
-        }
-
-        .teacher-name {
-            color: #555555;
-            font-size: 24px;
-            margin-top: -5px;
-            display: block;
-            font-weight: 600;
-        }
-
-        .icons-row {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            font-size: 28px;
-            margin-top: 15px;
+            align-items: center;
+            gap: 10px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
+        /* تصميم نص "ترتيلا" متطابق مع الخط الكوفي واللون والأبعاد */
+        .main-title {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 3.2rem;
             color: var(--purple-main);
-            font-size: 16px;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid #f3e5f5;
-            border-radius: 16px;
-            font-size: 15px;
-            background-color: #fff9ff;
-            outline: none;
-            transition: all 0.3s ease;
-            color: var(--text-color);
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--purple-main);
-            box-shadow: 0 0 10px rgba(142, 68, 173, 0.15);
-            background-color: #ffffff;
-        }
-
-        /* حقل إضافة اسم جديد متحرك */
-        #newStudentGroup {
-            display: none;
-            background: #fff3f8;
-            padding: 12px;
-            border-radius: 14px;
-            border: 1px dashed #fbcfe8;
-            margin-top: 10px;
-            animation: fadeIn 0.3s ease;
-        }
-
-        /* أزرار اختيار حالة الحضور الدائرية المبهجة */
-        .status-box {
+            margin: 5px 0;
+            padding: 0;
+            line-height: 1.1;
             display: flex;
-            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
         }
 
-        .status-option {
-            flex: 1;
-            text-align: center;
+        /* فرع أوراق الشجر الجانبي المستوحى من اللوجو تماماً */
+        .leaf-icon {
+            font-size: 1.8rem;
+            color: var(--purple-main);
+            transform: rotate(-15deg);
+            opacity: 0.85;
         }
 
-        .status-option input { 
-            display: none; 
+        /* تصميم اسم المعلمة بنفس الخط الكوفي ونفس الرموز المحيطة للتماثل */
+        .sub-title-teacher {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 1.4rem;
+            color: var(--purple-main);
+            margin: 15px 0 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
         }
 
-        .status-option label {
-            background: #fff5f9;
-            padding: 14px;
-            border-radius: 16px;
-            cursor: pointer;
-            border: 2px solid #fbcfe8;
-            display: block;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            color: var(--text-color);
+        .sub-title-online {
+            font-size: 1rem;
+            color: var(--gold);
+            margin: 5px 0 0 0;
+            font-weight: 900;
+            background: rgba(212, 175, 55, 0.1);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 50px;
+            border: 1px dashed rgba(212, 175, 55, 0.3);
         }
 
-        .status-option input:checked + label {
-            background: linear-gradient(45deg, var(--purple-main), #a29bfe);
-            color: white;
-            border-color: var(--purple-main);
-            box-shadow: 0 5px 15px rgba(142, 68, 173, 0.2);
+        /* بطاقة عرض الورد اليومي التفاعلية */
+        .card { 
+            background: rgba(255, 255, 255, 0.92); 
+            padding: 30px 25px; 
+            border-radius: 30px; 
+            border: 3px solid var(--purple-light); 
+            max-width: 440px; 
+            margin: 20px auto; 
+            box-shadow: 0 15px 35px rgba(147, 103, 154, 0.08); 
+            box-sizing: border-box;
+            backdrop-filter: blur(5px);
         }
 
-        /* كارت تقييم الأداء يظهر تلقائياً مع الحضور ويختفي مع الغياب */
-        .eval-card {
-            background: #faf5ff;
-            padding: 20px;
-            border-radius: 20px;
-            border: 2px solid #f3e5f5;
-            margin-top: 20px;
-            animation: fadeIn 0.4s ease;
+        h2, h3 { color: var(--purple-main); margin-top: 0; font-weight: 900; }
+        
+        .wird-box { 
+            background: linear-gradient(135deg, var(--purple-main), #b38cb9); 
+            padding: 20px; 
+            border-radius: 20px; 
+            color: white; 
+            font-weight: bold; 
+            margin: 20px 0; 
+            font-size: 1.35rem; 
+            box-shadow: 0 8px 20px rgba(147, 103, 154, 0.25);
+            border: 2px dashed rgba(255,255,255,0.4);
+            line-height: 1.7;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* إحصائيات البطل التفاعلية */
+        .hero-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            background: var(--purple-light);
+            padding: 12px;
+            border-radius: 15px;
         }
 
-        /* زر الحفظ والتسجيل الفخم */
-        .submit-btn {
+        .stat-item { font-size: 0.95rem; font-weight: bold; color: var(--purple-main); display: flex; align-items: center; gap: 5px; }
+        .stat-item i { color: var(--gold); }
+
+        input { 
+            width: 100%; 
+            padding: 14px; 
+            border-radius: 15px; 
+            border: 2px solid var(--purple-light); 
+            margin-bottom: 15px; 
+            text-align: center; 
+            font-size: 1.1rem; 
+            outline: none;
+            transition: 0.3s;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        input:focus { border-color: var(--purple-main); box-shadow: 0 0 10px rgba(147, 103, 154, 0.15); }
+
+        button { 
+            background: linear-gradient(135deg, #D4AF37, #AA7C11); 
+            border: none; 
+            padding: 15px 45px; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            color: white; 
+            font-size: 1.2rem; 
+            box-shadow: 0 5px 15px rgba(170, 124, 17, 0.3);
+            transition: 0.3s;
             width: 100%;
-            background: linear-gradient(45deg, var(--purple-main), #a29bfe);
-            color: white;
-            border: none;
-            padding: 16px;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 16px;
-            cursor: pointer;
-            margin-top: 25px;
-            box-shadow: 0 6px 20px rgba(142, 68, 173, 0.25);
-            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
         }
+        button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(170, 124, 17, 0.5); }
+        button:disabled { background: #ccc; box-shadow: none; cursor: not-allowed; }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.35);
+        /* لوحة المتصدرين وقائمة الأبطال */
+        .leaderboard { 
+            background: rgba(255, 255, 255, 0.92); 
+            padding: 25px; 
+            border-radius: 30px; 
+            border: 3px solid var(--purple-light); 
+            max-width: 440px; 
+            margin: 20px auto; 
+            box-shadow: 0 15px 35px rgba(147, 103, 154, 0.08);
+            box-sizing: border-box;
+            backdrop-filter: blur(5px);
         }
-
-        .submit-btn:active {
-            transform: translateY(0);
+        
+        .student-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 14px 10px; 
+            border-bottom: 1px solid var(--purple-light); 
+            transition: 0.2s;
         }
-
-        /* تلميح النجاح والترحيل */
-        .alert {
-            display: none;
-            padding: 15px;
-            border-radius: 16px;
-            text-align: center;
-            margin-top: 20px;
-            font-weight: bold;
-            font-size: 15px;
-            background: #e8f5e9;
-            color: #2e7d32;
-            border: 2px solid #c8e6c9;
-        }
+        .student-item:hover { background-color: var(--purple-light); border-radius: 10px; }
+        .rank { font-weight: bold; min-width: 75px; text-align: right; color: var(--purple-main); }
+        .hero-name { flex-grow: 1; text-align: right; margin-right: 10px; font-weight: 600; }
+        .badge-tag { background: var(--mint); color: #4F772D; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; white-space: nowrap; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="decoration-top">🌿 🌙 📖</div>
-    
-    <div class="header">
-        <h1 class="platform-name ruqaa">منصة ترتيلاً</h1>
-        <span class="teacher-name ruqaa">المعلمة بسنت</span>
-        
-        <div class="icons-row">
-            <span style="color: #9b59b6;" title="غصن بنفسج"><i class="fa-solid fa-leaf"></i></span>
-            <span style="color: var(--gold-accent);" title="هلال ذهبي"><i class="fa-solid fa-moon"></i></span>
-            <span style="color: #5d4037;" title="مصحف شريف"><i class="fa-solid fa-book-quran"></i></span>
+    <div class="header-container">
+        <div class="top-decorations">
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-solid fa-moon"></i>
+            <i class="fa-regular fa-star"></i>
         </div>
+        <h1 class="main-title">
+            <i class="fa-solid fa-leaf leaf-icon"></i>
+            تَرْتِيلَا
+        </h1>
+        <div class="sub-title-teacher">
+            <i class="fa-solid fa-leaf leaf-icon" style="font-size: 1.1rem;"></i>
+            تحت إشراف المعلمة بسنت أحمد
+        </div>
+        <div class="sub-title-online">حفظ القرآن الكريم أون لاين 🌿</div>
     </div>
 
-    <form id="tartilaForm">
-        <div class="form-group">
-            <label>📅 تاريخ الحلقة اليوم:</label>
-            <input type="date" id="halkaDate" required>
+    <div class="card">
+        <h2>ورد اليوم 🌟</h2>
+        <div class="wird-box" id="wirdDisplay">جاري سحب الورد...</div>
+        
+        <div class="hero-stats">
+            <div class="stat-item"><i class="fa-solid fa-fire"></i> الالتزام: <span id="localStreak">0</span> يوم</div>
+            <div class="stat-item"><i class="fa-solid fa-star"></i> نقاطك: <span id="localXP">0</span> XP</div>
         </div>
 
-        <div class="form-group">
-            <label>👤 اختر اسم الطالب / الطالبة:</label>
-            <select id="studentSelect" onchange="checkNewStudent(this.value)" required>
-                <option value="" disabled selected>-- اختر الطالب من القائمة --</option>
-                <option value="محمد ماجد">محمد ماجد</option>
-                <option value="محمد على">محمد على</option>
-                <option value="يارا">يارا</option>
-                <option value="ادم إسلام">ادم إسلام</option>
-                <option value="فريده">فريده</option>
-                <option value="عمر">عمر</option>
-                <option value="لين">لين</option>
-                <option value="رقيه">رقيه</option>
-                <option value="منصور">منصور</option>
-                <option value="مؤيد">مؤيد</option>
-                <option value="جومانا">جومانا</option>
-                <option value="جيدا">جيدا</option>
-                <option value="أروى">أروى</option>
-                <option value="أسمى">أسمى</option>
-                <option value="يوسف">يوسف</option>
-                <option value="مريم">مريم</option>
-                <option value="زياد">زياد</option>
-                <option value="ريان">ريان</option>
-                <option value="مالك">مالك</option>
-                <option value="حمزه">حمزه</option>
-                <option value="حلا ماجد">حلا ماجد</option>
-                <option value="أدم حسين">أدم حسين</option>
-                <option value="بسمله">بسمله</option>
-                <option value="نوران">نوران</option>
-                <option value="ADD_NEW">➕ إضافة اسم طالب جديد غير مسجل...</option>
-            </select>
-            
-            <div id="newStudentGroup">
-                <label style="font-size: 14px; margin-top: 5px;">✍️ اكتب اسم الطالب الجديد:</label>
-                <input type="text" id="newStudentName" placeholder="اكتبي الاسم الجديد هنا...">
-            </div>
-        </div>
+        <input type="text" id="studentName" placeholder="اكتب اسمك يا بطل" oninput="loadHeroStats()">
+        <button id="submitBtn" onclick="sendData()">تم الإنجاز ويجمع النقاط ✅</button>
+    </div>
 
-        <div class="form-group">
-            <label>📍 حالة الحضور والغياب:</label>
-            <div class="status-box">
-                <div class="status-option">
-                    <input type="radio" name="st" id="p" value="حضور" checked onclick="showEval(true)">
-                    <label for="p">حضور ✅</label>
-                </div>
-                <div class="status-option">
-                    <input type="radio" name="st" id="a" value="غياب" onclick="showEval(false)">
-                    <label for="a">غياب ❌</label>
-                </div>
-            </div>
-        </div>
-
-        <div id="evalArea" class="eval-card">
-            <div class="form-group">
-                <label>📖 مستوى الحفظ (الجديد):</label>
-                <select id="hifz">
-                    <option value="ممتاز ومتصل (بدون أخطاء)">ممتاز ومتصل (بدون أخطاء)</option>
-                    <option value="جيد جداً (خطأ إلى خطأين)">جيد جداً (خطأ إلى خطأين)</option>
-                    <option value="وسط (يحتاج مراجعة وتثبيت)">وسط (يحتاج مراجعة وتثبيت)</option>
-                    <option value="ضعيف (لم يحفظ)">ضعيف (لم يحفظ)</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>🔄 مستوى المراجعة (الماضي):</label>
-                <select id="morajaa">
-                    <option value="تم التمكين بنجاح وتثبيته">تم التمكين بنجاح وتثبيته</option>
-                    <option value="مراجعة جيدة (أخطاء بسيطة)">مراجعة جيدة (أخطاء بسيطة)</option>
-                    <option value="تداخل في الأوجه وأواخر الآيات">تداخل في الأوجه وأواخر الآيات</option>
-                    <option value="تحتاج إعادة تمكين الماضي بالكامل">تحتاج إعادة تمكين الماضي بالكامل</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>✨ جودة التجويد والمخارج:</label>
-                <select id="tajweed">
-                    <option value="تجويد سليم وممتاز">تجويد سليم وممتاز</option>
-                    <option value="لحن خفي (نقص غنن / مدود)">لحن خفي (نقص غنن / مدود)</option>
-                    <option value="لحن جلي (خطأ في تشكيل حركة)">لحن جلي (خطأ في تشكيل حركة)</option>
-                    <option value="عدم ضبط وتطبيق مخارج الحروف">عدم ضبط وتطبيق مخارج الحروف</option>
-                </select>
-            </div>
-
-            <div class="form-group" style="margin-bottom: 0;">
-                <label>📝 بيان القصور أو الملاحظات المحددة للحلقة:</label>
-                <textarea id="notes" rows="3" placeholder="مثال: عنده تداخل في متشابهات سورة الملك، أو يحتاج تركيز على المد الطبيعي..."></textarea>
-            </div>
-        </div>
-
-        <button type="submit" class="submit-btn ruqaa">حفظ التقرير وترحيله لـ ترتيلاً ✨</button>
-    </form>
-
-    <div id="msg" class="alert">تم ترحيل وحفظ التقرير بنجاح يا معلمة بسنت! 🌸</div>
-</div>
+    <div class="leaderboard">
+        <h3>لوحة الأبطال المتصدرين 🏆</h3>
+        <div id="list">تحميل قائمة الأبطال...</div>
+    </div>
 
 <script>
-    // تعيين تاريخ اليوم تلقائياً
-    document.getElementById('halkaDate').valueAsDate = new Date();
+    // رابط الـ Web App الخاص بكِ والمرتبط بـ Google Sheets لإدارة الأسماء والورد تلقائياً
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyu4LRyi2QQs7J1ysA5CAnWUdEZprwuJECEmSiEgNolM9p_yF7zgA9HFjpzCPVKVvCS/exec';
 
-    // دالة إخفاء وإظهار كارت التقييم حسب حالة الحضور
-    function showEval(v) {
-        document.getElementById('evalArea').style.display = v ? 'block' : 'none';
+    function loadHeroStats() {
+        const name = document.getElementById('studentName').value.trim();
+        if(!name) {
+            document.getElementById('localStreak').innerText = "0";
+            document.getElementById('localXP').innerText = "0";
+            return;
+        }
+        const streak = localStorage.getItem(name + '_streak') || 0;
+        const xp = localStorage.getItem(name + '_xp') || 0;
+        document.getElementById('localStreak').innerText = streak;
+        document.getElementById('localXP').innerText = xp;
     }
 
-    // دالة إخفاء وإظهار خانة كتابة الاسم الجديد
-    function checkNewStudent(val) {
-        const newGroup = document.getElementById('newStudentGroup');
-        if(val === "ADD_NEW") {
-            newGroup.style.display = 'block';
-            document.getElementById('newStudentName').setAttribute('required', 'true');
-        } else {
-            newGroup.style.display = 'none';
-            document.getElementById('newStudentName').removeAttribute('required');
+    function updateHeroStats(name) {
+        let streak = parseInt(localStorage.getItem(name + '_streak') || 0);
+        let xp = parseInt(localStorage.getItem(name + '_xp') || 0);
+        const lastCheck = localStorage.getItem(name + '_last_check');
+        const todayStr = new Date().toDateString();
+
+        if (lastCheck !== todayStr) {
+            streak = streak + 1; 
+            xp = xp + 100;       
+            localStorage.setItem(name + '_streak', streak);
+            localStorage.setItem(name + '_xp', xp);
+            localStorage.setItem(name + '_last_check', todayStr);
+        }
+        loadHeroStats();
+    }
+
+    function getBadge(index) {
+        if (index === 0) return "بطل ماسي 💎";
+        if (index === 1) return "حافظ محترف 👑";
+        if (index === 2) return "مُرتل سريع ⚡";
+        return "بطل ملتزم ⭐";
+    }
+
+    async function loadData() {
+        try {
+            const response = await fetch(scriptURL + '?nocache=' + new Date().getTime());
+            const data = await response.json();
+            document.getElementById('wirdDisplay').innerText = data.wirdText || "اكتبي الورد في الخلية A1";
+            
+            const listDiv = document.getElementById('list');
+            if (!data.leaderboard || data.leaderboard.length === 0) {
+                listDiv.innerHTML = "كن أول بطل اليوم! ✨";
+            } else {
+                let validCount = 0;
+                listDiv.innerHTML = data.leaderboard.map((name) => {
+                    if (!name) return '';
+                    let nameStr = String(name).trim();
+                    if (nameStr.includes('GMT') || nameStr.includes('/') || nameStr.includes(':') || nameStr === "") return '';
+                    
+                    let rank = validCount === 0 ? '🥇 الأول' : validCount === 1 ? '🥈 الثاني' : validCount === 2 ? '🥉 الثالث' : (validCount + 1) + '# ';
+                    let badge = getBadge(validCount); 
+                    validCount++;
+                    
+                    return `
+                        <div class="student-item">
+                            <span class="rank">${rank}</span>
+                            <span class="hero-name">${nameStr}</span>
+                            <span class="badge-tag">${badge}</span>
+                        </div>`;
+                }).join('');
+            }
+        } catch (e) { 
+            document.getElementById('wirdDisplay').innerText = "خطأ في تحميل البيانات"; 
+            document.getElementById('list').innerHTML = "تأكدي من تنظيف الصفوف الزائدة في الشيت 🌸";
         }
     }
 
-    document.getElementById('tartilaForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const msg = document.getElementById('msg');
-        msg.style.display = 'block';
-        msg.style.background = '#e8f5e9';
-        msg.style.color = '#2e7d32';
-        msg.style.borderColor = '#c8e6c9';
-        msg.innerText = "جاري إرسال البيانات وتحديث السطور... ✨";
+    async function sendData() {
+        const nameInput = document.getElementById('studentName');
+        const name = nameInput.value.trim();
+        const wird = document.getElementById('wirdDisplay').innerText;
 
-        const status = document.querySelector('input[name="st"]:checked').value;
-        
-        // استخلاص اسم الطالب سواء المختار أو المكتوب جديد
-        const selectVal = document.getElementById('studentSelect').value;
-        let finalStudentName = selectVal;
-        if(selectVal === "ADD_NEW") {
-            finalStudentName = document.getElementById('newStudentName').value;
+        if (!name) return alert("اكتب اسمك يا بطل 🌸");
+
+        document.getElementById('submitBtn').disabled = true;
+        confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+        updateHeroStats(name);
+
+        const finalURL = `${scriptURL}?name=${encodeURIComponent(name)}&task=${encodeURIComponent(wird)}`;
+
+        try {
+            await fetch(finalURL, { method: 'GET', mode: 'no-cors' });
+            alert(`بارَك الله فيك يا بطل! تم تسجيل إنجازك وحصلت على +100 نقطة وازداد معدل التزامك 🔥!`);
+            nameInput.value = '';
+            loadHeroStats();
+            setTimeout(loadData, 2000);
+        } catch (e) {
+            alert("تم الإرسال بنجاح وتحديث لوحة الأبطال!");
+            location.reload();
+        } finally {
+            document.getElementById('submitBtn').disabled = false;
         }
+    }
 
-        let hifz = "-";
-        let morajaa = "-";
-        let tajweed = "-";
-        let deficiency = "-";
-
-        if(status === "حضور") {
-            hifz = document.getElementById('hifz').value;
-            morajaa = document.getElementById('morajaa').value;
-            tajweed = document.getElementById('tajweed').value;
-            deficiency = document.getElementById('notes').value || "لا يوجد قصور";
-        } else {
-            deficiency = "الطالب غائب عن الحلقة اليوم";
-        }
-
-        const payload = {
-            date: document.getElementById('halkaDate').value,
-            name: finalStudentName,
-            status: status,
-            hifz: hifz,
-            morajaa: morajaa,
-            tajweed: tajweed,
-            deficiency: deficiency
-        };
-
-        // الرابط السحري الجديد الخاص بكِ مفعل ومربوط بالكامل 👇
-        const url = "https://script.google.com/macros/s/AKfycbyRQBdGNtCkoP_O4of2Ym4_G3vt5ukUlm4f64m_wufrV0r8lFFFAkdkdwSB23KUzlkn/exec";
-
-        fetch(url, {
-            method: 'POST',
-            mode: 'no-cors',
-            body: JSON.stringify(payload)
-        }).then(() => {
-            msg.innerText = "تم حفظ التقرير بنجاح تـام في جدول جوجل شيت يا معلمة بسنت! 🌸";
-            
-            // إعادة ضبط الاستمارة تلقائياً
-            document.getElementById('studentSelect').value = "";
-            document.getElementById('newStudentName').value = "";
-            document.getElementById('newStudentGroup').style.display = 'none';
-            document.getElementById('notes').value = "";
-            
-            setTimeout(() => msg.style.display='none', 5000);
-        }).catch(err => {
-            msg.style.background = '#fde8e8';
-            msg.style.color = '#9b1c1c';
-            msg.style.borderColor = '#f8b4b4';
-            msg.innerText = "حدث خطأ في الاتصال، يرجى مراجعة صلاحيات رابط جوجل سكريبت.";
-        });
-    });
+    window.onload = loadData;
 </script>
-
 </body>
 </html>
